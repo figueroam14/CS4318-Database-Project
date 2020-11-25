@@ -19,6 +19,60 @@
 -- Table structure for table `admins`
 --
 
+
+
+
+
+--
+ /*
+Variables:
+
+Staff_Id
+Education
+Branch 
+Patient_Id
+
+First_Name 
+Last_Name 
+Phone_Num
+Address
+Gender 
+DOB
+
+Employee_Id
+Doctor_Id
+
+
+Insur_Name 
+Policy_Num
+Insurance_Id
+Insur_Date
+Insur_Name
+
+Appt_Time 
+Appt_Date
+
+Pres_Time 
+Presc_Name
+Presc_Date
+Presc_Fee
+
+Procedure_Time
+Procedure_Name
+Procedure_Data
+Procedure_Fee
+
+*/
+--
+
+
+
+
+
+
+
+
+
 DROP TABLE IF EXISTS `admins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
