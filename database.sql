@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `hospital_database` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `hospital_database`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: hospital_database
@@ -81,12 +79,12 @@ DROP TABLE IF EXISTS `doctors`;
 CREATE TABLE `doctors` (
   `Doctor_Id` int NOT NULL,
   `First_Name` varchar(45) NOT NULL,
-  `Last_Name` varchar(45) DEFAULT NULL,
-  `DOB` varchar(45) DEFAULT NULL,
+  `Last_Name` varchar(45) NOT NULL,
+  `DOB` varchar(45) NOT NULL,
   `Phone_Num` varchar(45) DEFAULT NULL,
   `Address` varchar(45) DEFAULT NULL,
   `Gender` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`Doctor_Id`,`First_Name`)
+  PRIMARY KEY (`Doctor_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table contaning information about doctors including: * FirstName\n    * Last_Name\n    * DOB\n    * PhoneNum\n    * Address \n    * Gender\n\nDO WE NEED PRIMARY KEY FOR DOCTORS?\n    				';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -134,15 +132,15 @@ DROP TABLE IF EXISTS `nurses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `nurses` (
+  `Nurse_Id` int NOT NULL,
   `FirstName` varchar(45) NOT NULL,
-  `LastName` varchar(45) DEFAULT NULL,
+  `LastName` varchar(45) NOT NULL,
   `PhoneNum` varchar(45) DEFAULT NULL,
   `Address` varchar(45) DEFAULT NULL,
   `Education` varchar(45) DEFAULT NULL,
-  `DOB` int DEFAULT NULL,
+  `DOB` int NOT NULL,
   `Gender` varchar(45) DEFAULT NULL,
-  `Nurse_Id` int NOT NULL,
-  PRIMARY KEY (`FirstName`,`Nurse_Id`)
+  PRIMARY KEY (`Nurse_Id`,`FirstName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for nurses		';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -152,7 +150,7 @@ CREATE TABLE `nurses` (
 
 LOCK TABLES `nurses` WRITE;
 /*!40000 ALTER TABLE `nurses` DISABLE KEYS */;
-INSERT INTO `nurses` VALUES ('Paul ','Burnell','8996002929','1 Nuketown St.','Masters',5301987,'M',5),('Phil  ','Lambert','2819988787','990 Main St ','Masters',2231997,'M',4),('Stephen ','Stewart','2129990000','125 Penicl St','Bachelors',5301987,'M',2),('Stephen ','Stewart','2129990000','125 Penicl St','Bachelors',5301987,'M',3),('Wanda','Mills','2129990838','126 Pencil St.','Bachelors',5121998,'F',1);
+INSERT INTO `nurses` VALUES (1,'Wanda','Mills','2129990838','126 Pencil St.','Bachelors',5121998,'F'),(2,'Stephen ','Stewart','2129990000','125 Penicl St','Bachelors',5301987,'M'),(3,'Stephen ','Stewart','2129990000','125 Penicl St','Bachelors',5301987,'M'),(4,'Phil  ','Lambert','2819988787','990 Main St ','Masters',2231997,'M'),(5,'Paul ','Burnell','8996002929','1 Nuketown St.','Masters',5301987,'M');
 /*!40000 ALTER TABLE `nurses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,8 +163,8 @@ DROP TABLE IF EXISTS `patients`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `patients` (
   `Patient_Id` int NOT NULL,
-  `First_Name` varchar(255) DEFAULT NULL,
-  `Last_Name` varchar(255) DEFAULT NULL,
+  `First_Name` varchar(255) NOT NULL,
+  `Last_Name` varchar(255) NOT NULL,
   `Phone_Num` varchar(255) DEFAULT NULL,
   `Address` varchar(255) DEFAULT NULL,
   `Gender` varchar(255) DEFAULT NULL,
@@ -247,12 +245,12 @@ DROP TABLE IF EXISTS `staff`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `staff` (
   `Staff_Id` int NOT NULL,
-  `First_Name` varchar(45) DEFAULT NULL,
-  `Last_Name` varchar(45) DEFAULT NULL,
+  `First_Name` varchar(45) NOT NULL,
+  `Last_Name` varchar(45) NOT NULL,
   `Phone_Num` varchar(45) DEFAULT NULL,
   `Address` varchar(45) DEFAULT NULL,
   `Gender` varchar(45) DEFAULT NULL,
-  `DOB` int DEFAULT NULL,
+  `DOB` int NOT NULL,
   `Education` varchar(45) DEFAULT NULL,
   `Branch` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`Staff_Id`)
@@ -286,4 +284,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-25 18:03:38
+-- Dump completed on 2020-11-25 18:21:50
