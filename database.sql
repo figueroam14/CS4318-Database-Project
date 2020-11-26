@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `hospital_database` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `hospital_database`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
 --
 -- Host: localhost    Database: hospital_database
@@ -18,60 +20,6 @@
 --
 -- Table structure for table `admins`
 --
-
-
-
-
-
---
- /*
-Variables:
-
-Staff_Id
-Education
-Branch 
-Patient_Id
-
-First_Name 
-Last_Name 
-Phone_Num
-Address
-Gender 
-DOB
-
-Employee_Id
-Doctor_Id
-
-
-Insur_Name 
-Policy_Num
-Insurance_Id
-Insur_Date
-Insur_Name
-
-Appt_Time 
-Appt_Date
-
-Pres_Time 
-Presc_Name
-Presc_Date
-Presc_Fee
-
-Procedure_Time
-Procedure_Name
-Procedure_Data
-Procedure_Fee
-
-*/
---
-
-
-
-
-
-
-
-
 
 DROP TABLE IF EXISTS `admins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -338,4 +286,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-25 17:42:00
+-- Dump completed on 2020-11-25 18:03:38
