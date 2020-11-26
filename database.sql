@@ -21,6 +21,27 @@ USE `hospital_database`;
 -- Table structure for table `admins`
 --
 
+/*
+
+Commands:
+
+Step 2: To display all data per each table
+
+SELECT * FROM hospital_database.appointments; -- Display All data for appointments table
+SELECT * FROM hospital_database.admins;-- Display All data for admins table
+SELECT * FROM hospital_database.doctors;-- Display All data for doctors table
+SELECT * FROM hospital_database.insurances;-- Display All data for insurances table
+SELECT * FROM hospital_database.nurses;-- Display All data for nurses table
+SELECT * FROM hospital_database.patients;-- Display All data for patients table
+SELECT * FROM hospital_database.prescriptions;-- Display All data for prescriptions table
+SELECT * FROM hospital_database.procedures;-- Display All data for procedures table
+SELECT * FROM hospital_database.staff;-- Display All data for staff table
+
+
+
+*/
+
+
 DROP TABLE IF EXISTS `admins`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
