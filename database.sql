@@ -1,3 +1,30 @@
+/*
+
+Step 2: Select all from each tables
+
+SELECT * FROM hospital_database.patient;
+SELECT * FROM hospital_database.admin;
+SELECT * FROM hospital_database.appointment;
+SELECT * FROM hospital_database.doctor;
+SELECT * FROM hospital_database.insurance;
+SELECT * FROM hospital_database.nurse;
+SELECT * FROM hospital_database.patient;
+SELECT * FROM hospital_database.prescription;
+SELECT * FROM hospital_database.procedure;
+SELECT * FROM hospital_database.staff;
+
+*/
+
+
+
+
+
+
+
+
+
+
+
 CREATE DATABASE  IF NOT EXISTS `hospital_database` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `hospital_database`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
@@ -18,245 +45,222 @@ USE `hospital_database`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `admins`
+-- Table structure for table `admin`
 --
 
-/*
-
-Commands:
-
-Step 2: To display all data per each table
-
-SELECT * FROM hospital_database.appointments; -- Display All data for appointments table
-SELECT * FROM hospital_database.admins;-- Display All data for admins table
-SELECT * FROM hospital_database.doctors;-- Display All data for doctors table
-SELECT * FROM hospital_database.insurances;-- Display All data for insurances table
-SELECT * FROM hospital_database.nurses;-- Display All data for nurses table
-SELECT * FROM hospital_database.patients;-- Display All data for patients table
-SELECT * FROM hospital_database.prescriptions;-- Display All data for prescriptions table
-SELECT * FROM hospital_database.procedures;-- Display All data for procedures table
-SELECT * FROM hospital_database.staff;-- Display All data for staff table
-
-
-
-*/
-
-
-DROP TABLE IF EXISTS `admins`;
+DROP TABLE IF EXISTS `admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `admins` (
+CREATE TABLE `admin` (
   `Employee_Id` int NOT NULL,
   `First_Name` varchar(255) DEFAULT NULL,
   `Last_Name` varchar(45) DEFAULT NULL,
   `Phone_Num` varchar(45) DEFAULT NULL,
   `Address` varchar(45) DEFAULT NULL,
   `Gender` varchar(45) DEFAULT NULL,
-  `DOB` int DEFAULT NULL,
+  `DOB` date DEFAULT NULL,
   PRIMARY KEY (`Employee_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for Admins with information including: \n* FirstName\n    * LastName\n	* PhoneNum\n	* Address \n    * Gender \n    * DOB\n    ';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `admins`
+-- Dumping data for table `admin`
 --
 
-LOCK TABLES `admins` WRITE;
-/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-INSERT INTO `admins` VALUES (1,'Andrea','Gomez','8883939232','616 Memorial Dr. ','F',5231990),(2,'Jane','Slater','8884743378','222 Slope Ave.','F',5231990),(3,'Andrea','Gomez','8883939232','818 Hershey Dr.. ','F',5231990);
-/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (1,'Andrea','Gomez','8883939232','616 Memorial Dr. ','F','1998-05-24'),(2,'Jane','Slater','8884743378','222 Slope Ave.','F','1994-04-13'),(3,'Andrea','Gomez','8883939232','818 Hershey Dr.. ','F','1980-01-12');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `appointments`
+-- Table structure for table `appointment`
 --
 
-DROP TABLE IF EXISTS `appointments`;
+DROP TABLE IF EXISTS `appointment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `appointments` (
+CREATE TABLE `appointment` (
   `Appt_ID` int NOT NULL,
-  `Appt_Time` int DEFAULT NULL,
-  `Appt_Date` int DEFAULT NULL,
+  `Appt_Data_Time` datetime DEFAULT NULL,
   PRIMARY KEY (`Appt_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for Appointments:\n* ApptID \n* ApptTime as int (using24h time)\n* ApptDate as in (052320) May 23 2020';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `appointments`
+-- Dumping data for table `appointment`
 --
 
-LOCK TABLES `appointments` WRITE;
-/*!40000 ALTER TABLE `appointments` DISABLE KEYS */;
-INSERT INTO `appointments` VALUES (1,1400,5202020);
-/*!40000 ALTER TABLE `appointments` ENABLE KEYS */;
+LOCK TABLES `appointment` WRITE;
+/*!40000 ALTER TABLE `appointment` DISABLE KEYS */;
+INSERT INTO `appointment` VALUES (1,'2020-11-10 02:11:12'),(2,'2020-12-05 03:00:00');
+/*!40000 ALTER TABLE `appointment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `doctors`
+-- Table structure for table `doctor`
 --
 
-DROP TABLE IF EXISTS `doctors`;
+DROP TABLE IF EXISTS `doctor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `doctors` (
+CREATE TABLE `doctor` (
   `Doctor_Id` int NOT NULL,
   `First_Name` varchar(45) NOT NULL,
   `Last_Name` varchar(45) NOT NULL,
-  `DOB` varchar(45) NOT NULL,
-  `Phone_Num` varchar(45) DEFAULT NULL,
-  `Address` varchar(45) DEFAULT NULL,
+  `DOB` date NOT NULL,
+  `Phone_Num` varchar(128) DEFAULT NULL,
+  `Address` varchar(128) DEFAULT NULL,
   `Gender` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`Doctor_Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table contaning information about doctors including: * FirstName\n    * Last_Name\n    * DOB\n    * PhoneNum\n    * Address \n    * Gender\n\nDO WE NEED PRIMARY KEY FOR DOCTORS?\n    				';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `doctors`
+-- Dumping data for table `doctor`
 --
 
-LOCK TABLES `doctors` WRITE;
-/*!40000 ALTER TABLE `doctors` DISABLE KEYS */;
-INSERT INTO `doctors` VALUES (1,'Michael','Figueroa','05241998','8329432474','616 Memorial Dr. ','M'),(2,'Patrick ','Bateman','09011989','555555555','612 Memorial Dr','M'),(3,'Patrick','Star','05241998','8329432474','212 Bikini Bottom','M'),(4,'Leon','Kennedy','05241998','8329432474','818 Racoon City','M'),(5,'John','Green','05241998','8329432474','1 Main Street','M'),(6,'Elon','Musk','05241998','8329432474','1 Tesla Blv','M');
-/*!40000 ALTER TABLE `doctors` ENABLE KEYS */;
+LOCK TABLES `doctor` WRITE;
+/*!40000 ALTER TABLE `doctor` DISABLE KEYS */;
+INSERT INTO `doctor` VALUES (1,'Patrick ','Bateman','1990-05-25','832-943-2474','616 Memorial Dr.','M'),(2,'Michael ','Figueroa','1974-01-19','832-938-9088','619 Memorial Dr.','M'),(3,'Patrick ','Star','1995-05-23','832-332-2434','1 Lockheed Blv','M'),(4,'Leon ','Kennedy','1982-01-25','832-213-2344','212 Memorial Dr.','M'),(5,'John ','Green','1983-03-25','832-333-2474','3234 Memorial Dr.','M'),(6,'Elon ','Musk','1990-05-25','832-943-2474','1 Madison St.','M');
+/*!40000 ALTER TABLE `doctor` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `insurances`
+-- Table structure for table `insurance`
 --
 
-DROP TABLE IF EXISTS `insurances`;
+DROP TABLE IF EXISTS `insurance`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `insurances` (
+CREATE TABLE `insurance` (
   `Inurance_Id` int NOT NULL,
   `Insur_Name` varchar(45) DEFAULT NULL,
   `Policy_Num` int DEFAULT NULL,
-  `Insur_Date` int DEFAULT NULL,
+  `Insur_Date` date DEFAULT NULL,
   PRIMARY KEY (`Inurance_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for Insurance information';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `insurances`
+-- Dumping data for table `insurance`
 --
 
-LOCK TABLES `insurances` WRITE;
-/*!40000 ALTER TABLE `insurances` DISABLE KEYS */;
-INSERT INTO `insurances` VALUES (1,'Aetna ',9983,52022);
-/*!40000 ALTER TABLE `insurances` ENABLE KEYS */;
+LOCK TABLES `insurance` WRITE;
+/*!40000 ALTER TABLE `insurance` DISABLE KEYS */;
+INSERT INTO `insurance` VALUES (1,'Aetna ',9983,'2020-05-25');
+/*!40000 ALTER TABLE `insurance` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `nurses`
+-- Table structure for table `nurse`
 --
 
-DROP TABLE IF EXISTS `nurses`;
+DROP TABLE IF EXISTS `nurse`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `nurses` (
+CREATE TABLE `nurse` (
   `Nurse_Id` int NOT NULL,
   `FirstName` varchar(45) NOT NULL,
   `LastName` varchar(45) NOT NULL,
   `PhoneNum` varchar(45) DEFAULT NULL,
   `Address` varchar(45) DEFAULT NULL,
   `Education` varchar(45) DEFAULT NULL,
-  `DOB` int NOT NULL,
   `Gender` varchar(45) DEFAULT NULL,
+  `DOB` date DEFAULT NULL,
   PRIMARY KEY (`Nurse_Id`,`FirstName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for nurses		';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `nurses`
+-- Dumping data for table `nurse`
 --
 
-LOCK TABLES `nurses` WRITE;
-/*!40000 ALTER TABLE `nurses` DISABLE KEYS */;
-INSERT INTO `nurses` VALUES (1,'Wanda','Mills','2129990838','126 Pencil St.','Bachelors',5121998,'F'),(2,'Stephen ','Stewart','2129990000','125 Penicl St','Bachelors',5301987,'M'),(3,'Stephen ','Stewart','2129990000','125 Penicl St','Bachelors',5301987,'M'),(4,'Phil  ','Lambert','2819988787','990 Main St ','Masters',2231997,'M'),(5,'Paul ','Burnell','8996002929','1 Nuketown St.','Masters',5301987,'M');
-/*!40000 ALTER TABLE `nurses` ENABLE KEYS */;
+LOCK TABLES `nurse` WRITE;
+/*!40000 ALTER TABLE `nurse` DISABLE KEYS */;
+INSERT INTO `nurse` VALUES (1,'Wanda','Mills','2129990838','126 Pencil St.','Bachelors','F','1967-05-07'),(2,'Stephen ','Stewart','2129990000','125 Penicl St','Bachelors','M','1992-07-21'),(3,'Stephen ','Stewart','2129990000','125 Penicl St','Bachelors','M','1993-04-14'),(4,'Phil  ','Lambert','2819988787','990 Main St ','Masters','M','1995-06-17'),(5,'Paul ','Burnell','8996002929','1 Nuketown St.','Masters','M','1994-04-19');
+/*!40000 ALTER TABLE `nurse` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `patients`
+-- Table structure for table `patient`
 --
 
-DROP TABLE IF EXISTS `patients`;
+DROP TABLE IF EXISTS `patient`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `patients` (
+CREATE TABLE `patient` (
   `Patient_Id` int NOT NULL,
   `First_Name` varchar(255) NOT NULL,
   `Last_Name` varchar(255) NOT NULL,
   `Phone_Num` varchar(255) DEFAULT NULL,
   `Address` varchar(255) DEFAULT NULL,
   `Gender` varchar(255) DEFAULT NULL,
-  `DOB` varchar(255) DEFAULT NULL,
+  `DOB` date DEFAULT NULL,
   PRIMARY KEY (`Patient_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for Patients\nPatient = Patient\n* PatientID - int: Allows whole numbers between -2,147,483,648 and 2,147,483,647\n* FirstName - varchar(255): Variable width character string\n * LastName -  varchar(255): Variable width character string\n* PhoneNum -  int:Allows whole numbers between -2,147,483,648 and 2,147,483,647\n	* Address -  varchar(255): Variable width character string\n    * Gender  -   varchar(255): Variable width character string (M/F)\n    * DOB     -    varchar(255): Varibable width character string (05241998)';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `patients`
+-- Dumping data for table `patient`
 --
 
-LOCK TABLES `patients` WRITE;
-/*!40000 ALTER TABLE `patients` DISABLE KEYS */;
-INSERT INTO `patients` VALUES (1,'Michael','Figueroa','8329432474','616 Memorial Heights ','M','05241998'),(2,'Puspa','Giri','2128887676','1100 York St.','F',NULL),(3,'Vy','Ngyuen ','5559498384','1 Main Street','M',NULL),(4,'Tim','Parr','5559498384','1 Main Street','M',NULL),(5,'Leah','Paige ','5559498384','1 Lockheed Blv','M',NULL),(6,'Ruth','Gill ','2812180728','612 Memorial Dr.','M',NULL),(7,'Victor','James ','5559897765','123 Slope Ln','M',NULL),(8,'Evan','McLean','8329432443','16000 Penssylvania Ave','M',NULL);
-/*!40000 ALTER TABLE `patients` ENABLE KEYS */;
+LOCK TABLES `patient` WRITE;
+/*!40000 ALTER TABLE `patient` DISABLE KEYS */;
+INSERT INTO `patient` VALUES (1,'Michael','Figueroa','8329432474','616 Memorial Heights ','M','1964-06-25'),(2,'Puspa','Giri','2128887676','1100 York St.','F','1966-04-19'),(3,'Vy','Ngyuen ','5559498384','1 Main Street','M','1969-03-30'),(4,'Tim','Parr','5559498384','1 Main Street','M','1972-05-26'),(5,'Leah','Paige ','5559498384','1 Lockheed Blv','M','1974-09-20'),(6,'Ruth','Gill ','2812180728','612 Memorial Dr.','M','1975-12-13'),(7,'Victor','James ','5559897765','123 Slope Ln','M','1977-01-07'),(8,'Evan','McLean','8329432443','16000 Penssylvania Ave','M','1992-09-01');
+/*!40000 ALTER TABLE `patient` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `prescriptions`
+-- Table structure for table `prescription`
 --
 
-DROP TABLE IF EXISTS `prescriptions`;
+DROP TABLE IF EXISTS `prescription`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `prescriptions` (
-  `Prec_Id` int NOT NULL,
+CREATE TABLE `prescription` (
+  `Presc_Id` int NOT NULL,
   `Pesc_Name` varchar(45) DEFAULT NULL,
-  `Presc_Fee` int DEFAULT NULL,
-  `Presc_Date` int DEFAULT NULL,
-  PRIMARY KEY (`Prec_Id`)
+  `Presc_Date` date DEFAULT NULL,
+  `Presc_Fee` decimal(5,2) DEFAULT NULL,
+  PRIMARY KEY (`Presc_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for Prescriptions\n					';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `prescriptions`
+-- Dumping data for table `prescription`
 --
 
-LOCK TABLES `prescriptions` WRITE;
-/*!40000 ALTER TABLE `prescriptions` DISABLE KEYS */;
-INSERT INTO `prescriptions` VALUES (3329,'Aderall',100,1102020);
-/*!40000 ALTER TABLE `prescriptions` ENABLE KEYS */;
+LOCK TABLES `prescription` WRITE;
+/*!40000 ALTER TABLE `prescription` DISABLE KEYS */;
+INSERT INTO `prescription` VALUES (3329,'Aderall',NULL,67.89);
+/*!40000 ALTER TABLE `prescription` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `procedures`
+-- Table structure for table `procedure`
 --
 
-DROP TABLE IF EXISTS `procedures`;
+DROP TABLE IF EXISTS `procedure`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `procedures` (
+CREATE TABLE `procedure` (
   `Procedure_Id` int NOT NULL,
-  `Procedure_Time` int DEFAULT NULL,
-  `Procedure_Date` int DEFAULT NULL,
   `Procedure_Name` varchar(45) DEFAULT NULL,
-  `Procedure_Fee` int DEFAULT NULL,
+  `Procedure_Date_Time` datetime DEFAULT NULL,
+  `Procedure_Fee` decimal(5,2) DEFAULT NULL,
   PRIMARY KEY (`Procedure_Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for procedures	';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `procedures`
+-- Dumping data for table `procedure`
 --
 
-LOCK TABLES `procedures` WRITE;
-/*!40000 ALTER TABLE `procedures` DISABLE KEYS */;
-INSERT INTO `procedures` VALUES (1,1500,5102020,'Xray',300);
-/*!40000 ALTER TABLE `procedures` ENABLE KEYS */;
+LOCK TABLES `procedure` WRITE;
+/*!40000 ALTER TABLE `procedure` DISABLE KEYS */;
+INSERT INTO `procedure` VALUES (71,'surgery','2021-02-04 03:00:00',200.00),(72,'surgery','2021-01-04 04:00:00',300.00),(73,'operation','2021-01-14 01:00:00',250.67);
+/*!40000 ALTER TABLE `procedure` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -307,4 +311,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-25 18:23:58
+-- Dump completed on 2020-11-27 12:02:01
