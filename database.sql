@@ -1,7 +1,7 @@
 
 //Things that needs to be change!!!
 1. Primary key for nurse will be only nurse_ID in nurse table
-2. For all DOB and any other dates, datatype should be DATE in the form of YYYY-MM-DD
+2. For all DOB and any other dates(insurance date, appointment date), datatype should be DATE in the form of YYYY-MM-DD
 3. appointments table is not correct so it needs to be change like this by combining date and time together
 CREATE TABLE `appointments` (
   `Appt_ID` int NOT NULL,
