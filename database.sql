@@ -8,8 +8,8 @@ CREATE TABLE `appointments` (
   `Appt_Date_Time` DATETIME DEFAULT NULL,
   PRIMARY KEY (`Appt_ID`)
 )
-INSERT INTO `database1`.`apointments`(`appt_ID`, `appt_date_time`) VALUES (44','2020-11-10 2:11:12'); 
-INSERT INTO `database1`.`apointments` (`appt_ID`, `appt_date_time`) VALUES ('45', '2020-12-5 3:00:00');
+INSERT INTO `database1`.`apointments`(`Appt_ID`, `Appt_Date_Time`) VALUES (44','2020-11-10 2:11:12'); 
+INSERT INTO `database1`.`apointments` (`Appt_ID`, `Appt_Date_Time`) VALUES ('45', '2020-12-5 3:00:00');
 
                                                                            
                                                                            
