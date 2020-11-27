@@ -1,21 +1,71 @@
 
 //Things that needs to be change!!!
-1. Primary key for nurse will be only nurse_ID in nurse table
-2. For all DOB and any other dates(insurance date, appointment date), datatype should be DATE in the form of YYYY-MM-DD
+1. First thing: needs to change all the entity name/table name to singular for eg. admins to admin
+2. For all DOB and any other dates like (insurance date, appointment date, press date, procedure date), datatype should be DATE in the form of YYYY-MM-DD
 3. appointments table is not correct so it needs to be change like this by combining date and time together
-CREATE TABLE `appointments` (
+CREATE TABLE `appointment` (
   `Appt_ID` int NOT NULL,
   `Appt_Date_Time` DATETIME DEFAULT NULL,
   PRIMARY KEY (`Appt_ID`)
 )
-INSERT INTO `database1`.`apointments`(`Appt_ID`, `Appt_Date_Time`) VALUES (44','2020-11-10 2:11:12'); 
-INSERT INTO `database1`.`apointments` (`Appt_ID`, `Appt_Date_Time`) VALUES ('45', '2020-12-5 3:00:00');
+INSERT INTO `database1`.`apointment`(`Appt_ID`, `Appt_Date_Time`) VALUES ('44','2020-11-10 2:11:12'); 
+INSERT INTO `database1`.`apointment` (`Appt_ID`, `Appt_Date_Time`) VALUES ('45', '2020-12-5 3:00:00');
 
-                                                                           
-                                                                           
-                                                                           
-                                                                           
-                                                                           
+ 4. Prescription table is not correct so it needs to be change like this
+ CREATE TABLE `prescription` (
+  `Prec_Id` int NOT NULL,
+  `Presc_Name` varchar(45) DEFAULT NULL,
+  `Presc_Fee` DECIMAL(5,2) DEFAULT NULL, // in order to accept any form of money like decimal
+  `Presc_Date` DATE DEFAULT NULL,
+  PRIMARY KEY (`Prec_Id`)
+)
+INSERT INTO `database1`.`prescription` (`Presc_Id`, `Presc_Name`, `Presc_Fee`, `Presc_Date`) VALUES ('61', 'Altace', '40.45', '2020-12-14');
+INSERT INTO `database1`.`prescription` (`Presc_Id`, `Presc_Name`, `Presc_Fee`, `Presc_Date`) VALUES ('62', 'Ultram', '20.78', '2020-11-30');                                                              
+  
+5. procedures table datatype are not correct as well so it needs to be like this  
+
+   CREATE TABLE `procedure` (
+  `Procedure_Id` int NOT NULL,
+  `Procedure_Name` varchar(45) DEFAULT NULL,
+  `Procedure_Date_Time` DATETIME DEFAULT NULL,
+  `Procedure_Fee` DECIMAL(5,2) DEFAULT NULL,
+  PRIMARY KEY (`Procedure_Id`)
+)
+
+INSERT INTO `database1`.`procedure` (`Procedure_Id`, `Procedure_Name`, `Procedure_Date_Time`, `Procedure_Fee`) VALUES ('71', 'surgery', '2021-02-4 3:00:00', '200');
+INSERT INTO `database1`.`procedure` (`Procedure_Id`, `Procedure_Name`, `Procedure_Date_Time`, `Procedure_Fee`) VALUES ('72', 'surgery', '2021-01-4 4:00:00', '300');
+INSERT INTO `database1`.`procedure` (`Procedure_Id`, `Procedure_Name`, `Procedure_Date_Time`, `Procedure_Fee`) VALUES ('73', 'operation', '2021-01-14 1:00:00', '250.67');
+ 
+ 6. Some changes needs to be in doctor table like this
+ CREATE TABLE `doctor` (
+  `Doctor_Id` int NOT NULL,
+  `First_Name` varchar(45) NOT NULL,
+  `Last_Name` varchar(45) NOT NULL,
+  `DOB` DATE NOT NULL,
+  `Phone_Num` varchar(128) DEFAULT NULL,
+  `Address` varchar(128) DEFAULT NULL,
+  `Gender` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Doctor_Id`)
+)
+7. Some changes needs to be in nurse table like below
+ CREATE TABLE `nurse` (
+  `Nurse_Id` int NOT NULL,
+  `FirstName` varchar(45) NOT NULL,
+  `LastName` varchar(45) NOT NULL,
+  `PhoneNum` varchar(45) DEFAULT NULL,
+  `Address` varchar(128) DEFAULT NULL,
+  `Education` varchar(45) DEFAULT NULL,
+  `DOB` DATE NOT NULL,
+  `Gender` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`Nurse_Id`) 
+)
+
+
+
+
+
+
+ 
 CREATE DATABASE  IF NOT EXISTS `hospital_database` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `hospital_database`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
