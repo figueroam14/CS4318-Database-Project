@@ -1,30 +1,3 @@
-/*
-
-Step 2: Select all from each tables
-
-SELECT * FROM hospital_database.patient;
-SELECT * FROM hospital_database.admin;
-SELECT * FROM hospital_database.appointment;
-SELECT * FROM hospital_database.doctor;
-SELECT * FROM hospital_database.insurance;
-SELECT * FROM hospital_database.nurse;
-SELECT * FROM hospital_database.patient;
-SELECT * FROM hospital_database.prescription;
-SELECT * FROM hospital_database.procedure;
-SELECT * FROM hospital_database.staff;
-
-*/
-
-
-
-
-
-
-
-
-
-
-
 CREATE DATABASE  IF NOT EXISTS `hospital_database` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `hospital_database`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
@@ -53,12 +26,12 @@ DROP TABLE IF EXISTS `admin`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `admin` (
   `Employee_Id` int NOT NULL,
-  `First_Name` varchar(255) DEFAULT NULL,
+  `First_Name` varchar(255) NOT NULL,
   `Last_Name` varchar(45) DEFAULT NULL,
   `Phone_Num` varchar(45) DEFAULT NULL,
   `Address` varchar(45) DEFAULT NULL,
   `Gender` varchar(45) DEFAULT NULL,
-  `DOB` date DEFAULT NULL,
+  `DOB` date NOT NULL,
   PRIMARY KEY (`Employee_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for Admins with information including: \n* FirstName\n    * LastName\n	* PhoneNum\n	* Address \n    * Gender \n    * DOB\n    ';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -167,8 +140,8 @@ CREATE TABLE `nurse` (
   `Address` varchar(45) DEFAULT NULL,
   `Education` varchar(45) DEFAULT NULL,
   `Gender` varchar(45) DEFAULT NULL,
-  `DOB` date DEFAULT NULL,
-  PRIMARY KEY (`Nurse_Id`,`FirstName`)
+  `DOB` date NOT NULL,
+  PRIMARY KEY (`Nurse_Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for nurses		';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -311,4 +284,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-27 12:02:01
+-- Dump completed on 2020-11-27 13:04:13
