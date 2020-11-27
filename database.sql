@@ -1,3 +1,21 @@
+
+//Things that needs to be change!!!
+1. Primary key for nurse will be only nurse_ID in nurse table
+2. For all DOB and any other dates datatype should be DATE in the form of YYYY-MM-DD
+3. appointments table needs to be change like this by combining date and time together
+CREATE TABLE `appointments` (
+  `Appt_ID` int NOT NULL,
+  `Appt_Date_Time` DATETIME DEFAULT NULL,
+  PRIMARY KEY (`Appt_ID`)
+)
+INSERT INTO `database1`.`apointments`(`appt_ID`, `appt_date_time`) VALUES (44','2020-11-10 2:11:12'); 
+INSERT INTO `database1`.`apointments` (`appt_ID`, `appt_date_time`) VALUES ('45', '2020-12-5 3:00:00');
+
+                                                                           
+                                                                           
+                                                                           
+                                                                           
+                                                                           
 CREATE DATABASE  IF NOT EXISTS `hospital_database` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `hospital_database`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
@@ -163,7 +181,7 @@ CREATE TABLE `nurses` (
   `Education` varchar(45) DEFAULT NULL,
   `DOB` int NOT NULL,
   `Gender` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`Nurse_Id`,`FirstName`)
+  PRIMARY KEY (`Nurse_Id`,`FirstName`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='Table for nurses		';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
