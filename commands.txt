@@ -63,7 +63,32 @@ INNER JOIN prescription ON doctor.Doctor_Id = prescription.Doctor_Id
 WHERE presc_Id = 66;
 
 2. 
-//Command
+
+// Add column Doctor_Id to procedure table
+ALTER TABLE `database1`.`procedure` 
+ADD COLUMN `Doctor_Id` INT NOT NULL AFTER `Procedure_Fee`;
+
+
+// Add values to just created Doctor_Id attribute in procedure table
+UPDATE `database1`.`procedure` SET `Doctor_Id` = '1' WHERE (`Procedure_Id` = '71');
+UPDATE `database1`.`procedure` SET `Doctor_Id` = '4' WHERE (`Procedure_Id` = '72');
+UPDATE `database1`.`procedure` SET `Doctor_Id` = '3' WHERE (`Procedure_Id` = '73');
+UPDATE `database1`.`procedure` SET `Doctor_Id` = '4' WHERE (`Procedure_Id` = '74');
+UPDATE `database1`.`procedure` SET `Doctor_Id` = '2' WHERE (`Procedure_Id` = '75');
+UPDATE `database1`.`procedure` SET `Doctor_Id` = '3' WHERE (`Procedure_Id` = '76');
+UPDATE `database1`.`procedure` SET `Doctor_Id` = '5' WHERE (`Procedure_Id` = '77');
+
+
+// Commands for doctor -> prescription entity
+// Get doctor  info responsible for doing procedure using procedure ID
+
+SELECT procedure.Procedure_Id, doctor.Doctor_Id, doctor.First_Name, doctor.Last_Name, doctor.Phone_Num
+FROM doctor
+INNER JOIN prescription ON doctor.Doctor_Id = procedure.Doctor_Id
+WHERE Procedure_Id = 73;
+
+
+
 
   
   
