@@ -22,6 +22,7 @@ SELECT * FROM hospital_database.staff;
 
 //Join between Prescription and Doctor
 //To add doctor id in prescription table 
+//Run these queries first then run the command
 ALTER TABLE `database1`.`prescription` 
 ADD COLUMN `Doctor_Id` INT NOT NULL AFTER `Presc_Date`;
 
