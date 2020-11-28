@@ -48,3 +48,20 @@ SELECT prescription.presc_Id, doctor.Doctor_Id, doctor.First_Name, doctor.Last_N
 FROM doctor
 INNER JOIN prescription ON doctor.Doctor_Id = prescription.Doctor_Id
 WHERE presc_Id = 66;
+
+
+//Command to make Doctor_Id foreign key in prescription table
+
+ALTER TABLE `database1`.`prescription` 
+CHANGE COLUMN `Doctor_Id` `Doctor_Id` INT NULL ,
+ADD INDEX `Doctor_Id_idx` (`Doctor_Id` ASC) VISIBLE;
+;
+ALTER TABLE `database1`.`prescription` 
+ADD CONSTRAINT `Doctor_Id`
+  FOREIGN KEY (`Doctor_Id`)
+  REFERENCES `database1`.`doctor` (`Doctor_Id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+  
+  
