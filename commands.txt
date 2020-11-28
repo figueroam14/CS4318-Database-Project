@@ -18,3 +18,32 @@ SELECT * FROM hospital_database.prescription;
 SELECT * FROM hospital_database.procedure;
 SELECT * FROM hospital_database.staff;
 */
+
+
+//Join between Prescription and Doctor
+//To add doctor id in prescription table 
+ALTER TABLE `database1`.`prescription` 
+ADD COLUMN `Doctor_Id` INT NOT NULL AFTER `Presc_Date`;
+
+//Adding more values in new column(Doctor_Id) of prescription table
+UPDATE `database1`.`prescription` SET `Doctor_Id` = '1' WHERE (`Presc_Id` = '61');
+UPDATE `database1`.`prescription` SET `Doctor_Id` = '4' WHERE (`Presc_Id` = '62');
+UPDATE `database1`.`prescription` SET `Doctor_Id` = '3' WHERE (`Presc_Id` = '63');
+UPDATE `database1`.`prescription` SET `Doctor_Id` = '4' WHERE (`Presc_Id` = '64');
+UPDATE `database1`.`prescription` SET `Doctor_Id` = '2' WHERE (`Presc_Id` = '65');
+UPDATE `database1`.`prescription` SET `Doctor_Id` = '5' WHERE (`Presc_Id` = '66');
+
+//Adding more values in prescriptions and doctors 
+INSERT INTO `database1`.`prescription` (`Presc_Id`, `Presc_Name`, `Presc_Fee`, `Presc_Date`, `Doctor_Id`) VALUES ('67', 'Ultram', '55.98', '2020-10-21', '3');
+INSERT INTO `database1`.`prescription` (`Presc_Id`, `Presc_Name`, `Presc_Fee`, `Presc_Date`, `Doctor_Id`) VALUES ('68', 'Altace', '33.33', '2020-12-21', '2');
+INSERT INTO `database1`.`prescription` (`Presc_Id`, `Presc_Name`, `Presc_Fee`, `Presc_Date`, `Doctor_Id`) VALUES ('69', 'Dibeta', '44.32', '2020-12-1', '1');
+INSERT INTO `database1`.`prescription` (`Presc_Id`, `Presc_Name`, `Presc_Fee`, `Presc_Date`, `Doctor_Id`) VALUES ('70', 'Dibeta', '55.43', '2020-12-22', '5');
+
+1. 
+//Command
+//Find doctor contact information who wrote the patient's prescription
+
+SELECT prescription.presc_Id, doctor.Doctor_Id, doctor.First_Name, doctor.Last_Name, doctor.Phone_Num
+FROM doctor
+INNER JOIN prescription ON doctor.Doctor_Id = prescription.Doctor_Id
+WHERE presc_Id = 66;
