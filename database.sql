@@ -1,3 +1,23 @@
+/*
+Step 2: Select all from each tables
+SELECT * FROM hospital_database.patient;
+SELECT * FROM hospital_database.admin;
+SELECT * FROM hospital_database.appointment;
+SELECT * FROM hospital_database.doctor;
+SELECT * FROM hospital_database.insurance;
+SELECT * FROM hospital_database.nurse;
+SELECT * FROM hospital_database.patient;
+SELECT * FROM hospital_database.prescription;
+SELECT * FROM hospital_database.procedure;
+SELECT * FROM hospital_database.staff;
+*/
+
+
+
+
+
+
+
 CREATE DATABASE  IF NOT EXISTS `hospital_database` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `hospital_database`;
 -- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
