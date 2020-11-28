@@ -1,0 +1,20 @@
+Place your commands here with description please. :) 
+
+
+
+
+
+
+/*
+Step 2: Select all from each tables
+SELECT * FROM hospital_database.patient;
+SELECT * FROM hospital_database.admin;
+SELECT * FROM hospital_database.appointment;
+SELECT * FROM hospital_database.doctor;
+SELECT * FROM hospital_database.insurance;
+SELECT * FROM hospital_database.nurse;
+SELECT * FROM hospital_database.patient;
+SELECT * FROM hospital_database.prescription;
+SELECT * FROM hospital_database.procedure;
+SELECT * FROM hospital_database.staff;
+*/
