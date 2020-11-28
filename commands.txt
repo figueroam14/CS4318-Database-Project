@@ -68,6 +68,18 @@ WHERE presc_Id = 66;
 ALTER TABLE `database1`.`procedure` 
 ADD COLUMN `Doctor_Id` INT NOT NULL AFTER `Procedure_Fee`;
 
+// Make foreign key
+ALTER TABLE `database1`.`procedure` 
+CHANGE COLUMN `Doctor_Id` `Doctor_Id` INT NULL ,
+ADD INDEX `Doctor_Id_idx` (`Doctor_Id` ASC) VISIBLE;
+;
+ALTER TABLE `database1`.`procedure` 
+ADD CONSTRAINT `Doctor_Id`
+  FOREIGN KEY (`Doctor_Id`)
+  REFERENCES `database1`.`doctor` (`Doctor_Id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
 
 // Add values to just created Doctor_Id attribute in procedure table
 UPDATE `database1`.`procedure` SET `Doctor_Id` = '1' WHERE (`Procedure_Id` = '71');
