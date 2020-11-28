@@ -96,7 +96,7 @@ UPDATE `database1`.`procedure` SET `Doctor_Id` = '5' WHERE (`Procedure_Id` = '77
 
 SELECT procedure.Procedure_Id, doctor.Doctor_Id, doctor.First_Name, doctor.Last_Name, doctor.Phone_Num
 FROM doctor
-INNER JOIN prescription ON doctor.Doctor_Id = procedure.Doctor_Id
+INNER JOIN procedure ON doctor.Doctor_Id = procedure.Doctor_Id
 WHERE Procedure_Id = 73;
 
 
