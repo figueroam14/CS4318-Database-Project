@@ -79,6 +79,8 @@ ADD CONSTRAINT `Doctor_Id`
   REFERENCES `database1`.`doctor` (`Doctor_Id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+  
+  
 
 
 // Add values to just created Doctor_Id attribute in procedure table
@@ -90,14 +92,19 @@ UPDATE `database1`.`procedure` SET `Doctor_Id` = '2' WHERE (`Procedure_Id` = '75
 UPDATE `database1`.`procedure` SET `Doctor_Id` = '3' WHERE (`Procedure_Id` = '76');
 UPDATE `database1`.`procedure` SET `Doctor_Id` = '5' WHERE (`Procedure_Id` = '77');
 
+// Change name of table from 'procedure' to 'procedures'
+ALTER TABLE `database1`.`procedure`
+RENAME TO `database1`.`procedures` ;
+
 
 // Commands for doctor -> prescription entity
 // Get doctor  info responsible for doing procedure using procedure ID
 
-SELECT procedure.Procedure_Id, doctor.Doctor_Id, doctor.First_Name, doctor.Last_Name, doctor.Phone_Num
+SELECT procedures.Procedure_Id, doctor.Doctor_Id, doctor.First_Name, doctor.Last_Name, doctor.Phone_Num
 FROM doctor
-INNER JOIN procedure ON doctor.Doctor_Id = procedure.Doctor_Id
+INNER JOIN procedures ON doctor.Doctor_Id = procedures.Doctor_Id
 WHERE Procedure_Id = 73;
+
 
 
 
