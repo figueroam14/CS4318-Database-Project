@@ -19,10 +19,11 @@ SELECT * FROM hospital_database.procedure;
 SELECT * FROM hospital_database.staff;
 */
 
-
-//Join between Prescription and Doctor
-//To add doctor id in prescription table 
+Step:4
 //Run these queries first then run the command
+//Join between Prescription and Doctor
+
+//To add doctor id in prescription table 
 ALTER TABLE `database1`.`prescription` 
 ADD COLUMN `Doctor_Id` INT NOT NULL AFTER `Presc_Date`;
 
@@ -40,18 +41,7 @@ INSERT INTO `database1`.`prescription` (`Presc_Id`, `Presc_Name`, `Presc_Fee`, `
 INSERT INTO `database1`.`prescription` (`Presc_Id`, `Presc_Name`, `Presc_Fee`, `Presc_Date`, `Doctor_Id`) VALUES ('69', 'Dibeta', '44.32', '2020-12-1', '1');
 INSERT INTO `database1`.`prescription` (`Presc_Id`, `Presc_Name`, `Presc_Fee`, `Presc_Date`, `Doctor_Id`) VALUES ('70', 'Dibeta', '55.43', '2020-12-22', '5');
 
-1. 
-//Command
-//Find doctor contact information who wrote the patient's prescription
-
-SELECT prescription.presc_Id, doctor.Doctor_Id, doctor.First_Name, doctor.Last_Name, doctor.Phone_Num
-FROM doctor
-INNER JOIN prescription ON doctor.Doctor_Id = prescription.Doctor_Id
-WHERE presc_Id = 66;
-
-
 //Command to make Doctor_Id foreign key in prescription table
-
 ALTER TABLE `database1`.`prescription` 
 CHANGE COLUMN `Doctor_Id` `Doctor_Id` INT NULL ,
 ADD INDEX `Doctor_Id_idx` (`Doctor_Id` ASC) VISIBLE;
@@ -62,6 +52,19 @@ ADD CONSTRAINT `Doctor_Id`
   REFERENCES `database1`.`doctor` (`Doctor_Id`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+  
+1. 
+//Command
+//Find doctor contact information who wrote the patient's prescription
+
+SELECT prescription.presc_Id, doctor.Doctor_Id, doctor.First_Name, doctor.Last_Name, doctor.Phone_Num
+FROM doctor
+INNER JOIN prescription ON doctor.Doctor_Id = prescription.Doctor_Id
+WHERE presc_Id = 66;
+
+2. 
+//Command
+
   
   
   
