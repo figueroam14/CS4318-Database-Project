@@ -1,0 +1,121 @@
+//add salary for doctor table
+ALTER TABLE `database1`.`doctor` 
+ADD COLUMN `Salary` VARCHAR(45) NOT NULL AFTER `Gender`;
+UPDATE `database1`.`doctor` SET `Salary` = '250000' WHERE (`Doctor_Id` = '1');
+UPDATE `database1`.`doctor` SET `Salary` = '320000' WHERE (`Doctor_Id` = '2');
+UPDATE `database1`.`doctor` SET `Salary` = '250000' WHERE (`Doctor_Id` = '3');
+UPDATE `database1`.`doctor` SET `Salary` = '295000' WHERE (`Doctor_Id` = '4');
+UPDATE `database1`.`doctor` SET `Salary` = '295000' WHERE (`Doctor_Id` = '5');
+
+//update nurse salary table
+ALTER TABLE `database1`.`nurse` 
+ADD COLUMN `Salary` VARCHAR(45) NOT NULL AFTER `Gender`;
+UPDATE `database1`.`nurse` SET `FirstName` = 'Laura', `PhoneNum` = '2129991001', `Gender` = 'F', `Salary` = '66000' WHERE (`Nurse_Id` = '33');
+UPDATE `database1`.`nurse` SET `Salary` = '71500' WHERE (`Nurse_Id` = '31');
+UPDATE `database1`.`nurse` SET `Salary` = '66000' WHERE (`Nurse_Id` = '32');
+UPDATE `database1`.`nurse` SET `Salary` = '79000' WHERE (`Nurse_Id` = '34');
+UPDATE `database1`.`nurse` SET `Salary` = '79000' WHERE (`Nurse_Id` = '35');
+
+//update insurance table
+UPDATE `database1`.`insurance` SET `Insur_Name` = 'Aetna' WHERE (`Insurance_Id` = '50');
+
+
+//staff
+ALTER TABLE `database1`.`staff` 
+ADD COLUMN `Salary` VARCHAR(45) NOT NULL AFTER `Education`;
+UPDATE `database1`.`staff` SET `Salary` = '25900' WHERE (`Employee_ID` = '31');
+UPDATE `database1`.`staff` SET `Salary` = '25000' WHERE (`Employee_ID` = '39');
+UPDATE `database1`.`staff` SET `Salary` = '37000' WHERE (`Employee_ID` = '32');
+UPDATE `database1`.`staff` SET `Salary` = '44000' WHERE (`Employee_ID` = '33');
+UPDATE `database1`.`staff` SET `Salary` = '42600' WHERE (`Employee_ID` = '35');
+UPDATE `database1`.`staff` SET `Salary` = '42000' WHERE (`Employee_ID` = '37');
+UPDATE `database1`.`staff` SET `Salary` = '49000' WHERE (`Employee_ID` = '34');
+UPDATE `database1`.`staff` SET `Salary` = '50000' WHERE (`Employee_ID` = '38');
+UPDATE `database1`.`staff` SET `Salary` = '42320' WHERE (`Employee_ID` = '40');
+UPDATE `database1`.`staff` SET `Salary` = '31000' WHERE (`Employee_ID` = '36');
+
+//Aggregate commands:
+
+//Nurse 
+//Count of how many nurses for each education degree.
+SELECT * FROM database1.nurse;
+SELECT Education, count(*)
+FROM database1.nurse
+GROUP BY Education;
+
+// Count of how many nurses for each education degree, with gender.
+SELECT * FROM database1.nurse;
+SELECT Education, Gender, count(*)
+FROM database1.nurse
+GROUP BY Education, Gender
+ORDER BY Education, Gender
+
+//Doctor
+//Highest Salary 
+SELECT * FROM database1.doctor;
+SELECT MAX(Salary) highest_salary
+FROM database1.doctor;
+
+// Calculates the average salary of doctor
+SELECT * FROM database1.doctor;
+SELECT AVG(Salary) average_salary
+FROM database1.doctor;
+
+//Find the doctor with salary higher than 270000
+SELECT * FROM database1.doctor;
+SELECT First_Name, salary 
+FROM database1.doctor
+GROUP BY First_Name
+HAVING salary > 270000
+
+//ADMIN
+// Count how many who live at specific street – for example main st
+SELECT * FROM database1.admin;
+SELECT count(*)
+FROM database1.admin
+WHERE Address LIKE '%main st%'
+
+//Appointment
+//count how many appointments in specific date – 2020-12-07
+SELECT * FROM database1.appointment;
+SELECT  count(*)
+FROM database1.appointment
+where appt_date_time like '%2020-12-07%'
+
+//Insurance 
+//Count How many insured of each insurance company
+SELECT * FROM database1.insurance;
+SELECT Insur_Name, count(*)
+FROM database1.insurance
+GROUP BY Insur_Name
+
+//Patient
+//Count How many patients are male
+ SELECT * FROM database1.patient;
+Select Gender, count(*)
+FROM database1.patient
+Where Gender = "M"
+
+//Prescription
+// calculate the average Prescription Fee for each Prescription Name:
+SELECT * FROM database1.prescription;
+SELECT Presc_Name, AVG(Presc_Fee)
+FROM database1.prescription
+GROUP BY Presc_Name
+ORDER BY Presc_Name;
+
+//Procedures
+// calculate the sum Procedures Fee for each Procedures Name:
+SELECT * FROM database1.procedures;
+SELECT Procedure_Name, SUM(Procedure_Fee)
+FROM database1.procedures
+GROUP BY Procedure_Name
+ORDER BY Procedure_Name;
+
+//STAFF
+// Find Min, Max and Average Salary base on Education of Staff
+SELECT * FROM database1.staff;
+SELECT Education, min(Salary) as Min_Salary, max(Salary) as Max_Salary, avg(Salary) as AVG_Salary
+FROM database1.staff
+GROUP BY Education
+
