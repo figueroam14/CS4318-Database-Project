@@ -1,0 +1,29 @@
+
+1. //(doctor and prescripttion) Find doctor contact information who wrote the patient's prescription
+
+SELECT prescription.presc_Id, doctor.Doctor_Id, doctor.First_Name, doctor.Last_Name, doctor.Phone_Num
+FROM doctor
+INNER JOIN prescription ON doctor.Doctor_Id = prescription.Doctor_Id
+WHERE presc_Id = 66;
+
+2. //(doctor and procedure) Get doctor  info responsible for doing procedure using procedure ID
+
+SELECT procedures.Procedure_Id, doctor.Doctor_Id, doctor.First_Name, doctor.Last_Name, doctor.Phone_Num
+FROM doctor
+INNER JOIN procedures ON doctor.Doctor_Id = procedures.Doctor_Id
+WHERE Procedure_Id = 73;
+
+3. //(appointment and patient) joint query for Retrieving the appointment date and time of patient
+
+SELECT appointment.appt_date_time, patient.Patient_Id, patient.First_Name, patient.Last_Name
+FROM appointment
+INNER JOIN patient ON patient.Patient_Id = appointment.Patient_Id
+WHERE patient.Patient_Id =7;
+
+4. //(staff and appointment) joint query to return which staff member scheduled appointment for patient
+SELECT staff.Employee_ID, staff.First_Name, staff.Last_Name, appointment.appt_ID, appt_date_time
+FROM appointment
+INNER JOIN staff ON staff.Employee_ID = appointment.Employee_Id
+WHERE appt_ID = 49;
+
+5. (doctor and patient) joint query to obtain the name of the patients with their doctor by whom they got their treatement.
