@@ -1,0 +1,93 @@
+1. //(doctor and prescripttion) Find doctor contact information who wrote the patient's prescription
+
+SELECT prescription.presc_Id AS "Prescription ID",
+prescription.Presc_Name AS "Prescription Name",
+doctor.Doctor_Id, doctor.First_Name, doctor.Last_Name,
+doctor.Phone_Num AS "Doctor's Phone"
+FROM doctor
+INNER JOIN prescription ON doctor.Doctor_Id = prescription.Doctor_Id
+WHERE Presc_Id = 63;
+
+2. //(appointment and patient) joint query for Retrieving the appointment date and time of patient
+
+SELECT 
+a.appt_date_time AS "Appointment date",
+p.Patient_Id AS "Patient ID",
+p.First_Name AS "Patient First Name", 
+p.Last_Name AS "Patient Last Name"
+FROM appointment a
+JOIN patient p ON p.Patient_Id = a.Patient_Id
+WHERE p.Patient_Id = 5;
+
+-- WHERE patient.First_Name ='TIM'AND patient.LAST_NAME ='Parr';
+
+3.//(doctor and procedure) Get doctor  info responsible for doing procedure using procedure name
+
+SELECT 
+p.Procedure_Id, p.procedure_Name, d.Doctor_Id, 
+d.First_Name AS "Doctor's Name",
+d.Phone_Num AS "Doctor's Phone"
+FROM doctor d
+INNER JOIN procedures p ON d.Doctor_Id = p.Doctor_Id
+WHERE Procedure_name = "rectal";
+
+4. //(staff and appointment) joint query to return which staff member scheduled appointment for patient
+
+SELECT 
+staff.Employee_ID AS "Staff ID",
+staff.First_Name AS "First Name", 
+staff.Last_Name AS "Last Name", 
+appointment.appt_ID AS "Appointment ID", 
+appt_date_time AS "Appointment Time"
+FROM appointment
+LEFT JOIN staff ON staff.Employee_ID = appointment.Employee_Id
+WHERE appt_ID = 45;
+
+5.//(doctor and patient) joint query to obtain the name of the patients with their doctor by whom they got their treatement.
+
+SELECT
+doctor.Doctor_Id AS "Doctor ID",
+doctor.First_Name AS "Doctor's name",
+patient.Patient_Id AS "Patient ID",
+patient.First_Name AS "Patient First Name",
+patient.Last_Name AS "Patient Last Name",
+patient.Phone_Num AS "Patient Phone"
+FROM patient
+INNER JOIN  doctor ON patient.Doctor_Id = doctor.Doctor_Id;
+
+-- WHERE patient_Id = 6;
+
+6. //(patient and insurance) join query to return the total count of insurance associated with patient
+
+SELECT COUNT(insur_Name) AS "Patient Count",
+insurance.Insurance_Id, 
+insurance.insur_Name AS "Insurance Name"
+FROM patient
+JOIN insurance ON insurance.Insurance_Id = patient.insurance_Id
+GROUP BY Insur_Name;
+
+-- WHERE insur_Name = "Aetna";
+
+
+7. //(nurse and admin) Join sql query to find name of admin who manages a nurse
+SELECT 
+nurse.Nurse_Id AS "Nurse ID", 
+nurse.FirstName AS "Nurse Name",
+admins.admin_Id AS "Admin ID", 
+admins.First_name AS "Admin First Name",
+admins.Last_Name AS "Admin Last Name"
+FROM admins
+INNER JOIN nurse ON admins.admin_Id = nurse.admin_Id
+WHERE Nurse_Id = 31;
+
+
+8.//(admin and staff) joint sql query to show the count of staffs managed by admin
+SELECT 
+COUNT(*) AS "Staff Count",
+a.admin_Id AS "Admin ID", 
+a.First_name AS "Admin First Name",
+a.Last_Name AS "Admin Last Name"
+FROM staff s
+INNER JOIN admins a ON a.admin_Id = s.admin_Id
+WHERE a.first_name = "James";
+
